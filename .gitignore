@@ -13,6 +13,10 @@ __pycache__/
 .venv/
 venv/
 *.pyc
+.pytest_cache/
+
+# local usage log
+*.db
 
 # os / editor
 .DS_Store

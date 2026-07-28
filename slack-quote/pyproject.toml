@@ -1,0 +1,9 @@
+[project]
+name = "slack-freight-desk"
+version = "0.1.0"
+description = "Slack app for quoting, tracking and pulling paperwork on freight"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
