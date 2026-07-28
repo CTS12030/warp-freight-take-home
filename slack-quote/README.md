@@ -1,5 +1,9 @@
 # Freight Desk for Slack
 
+**Recording:**
+
+**Brief:** [`BRIEF.md`](BRIEF.md) · **Tests:** 113, no network
+
 Three read-only slash commands that let a coordinator price a lane, chase a shipment and
 review an account without leaving Slack.
 
@@ -43,6 +47,24 @@ ack: HTTP 200 in 56ms
   Indicative rate, not a booking · 10 carriers · quoted 2026-07-28 20:06 UTC
   · req 01MOCKREQ0000000000000001
 ```
+
+---
+
+## What the brief asked for
+
+| Must-have | Where it lives |
+|---|---|
+| `/quote` end to end, cheapest-first | `commands/quote.py`; sorted on the exact float in `warp/normalize.py` |
+| The 3-second ack against a 4–16s quote | `main.py` returns in ~60ms, work continues in a background task and posts to `response_url` |
+| Verify Slack's signing secret | `slack/verify.py` — HMAC over the raw body, 5-minute replay window, 401 otherwise |
+| Keys stay server-side | `.env` is gitignored; the key is never logged or rendered. There is no bot token at all |
+| Every failure mode says something | Bad input, invalid ZIP, empty lane and exhausted retries each get their own card |
+| Every quote logged | `store.py` (SQLite) records lane, user, channel, outcome, latency, attempts, cache status |
+| README with decisions | below |
+
+Stretch taken: `/track`, `/shipments` with the interactive expand, a lane cache, Block Kit
+throughout, and 113 tests. Stretch skipped: deployment — a tunnel is enough to demonstrate
+the interesting behaviour, and a hosted URL would not have changed a single decision below.
 
 ---
 
@@ -93,7 +115,7 @@ See [`SLACK_SETUP.md`](SLACK_SETUP.md).
 
 ---
 
-## Decisions
+## Decisions & tradeoffs
 
 **Acknowledge first, answer later.** Every command returns within ~60ms with an echo of
 what was understood, then does the slow work in a `BackgroundTask` and posts the result
@@ -171,6 +193,48 @@ count.
 are three independent calls, fetched concurrently, and on this account four of seven
 shipments have no invoice. Each section renders its data or says why it cannot; a missing
 invoice never blanks the timeline next to it.
+
+---
+
+## How this was built
+
+Written in Cursor. Opus 5 planned the work and acted as orchestrator; Composer agents took
+the individual modules; Opus reviewed and tested each one before the next batch went out.
+The implementation-and-test loop ran about **30 minutes** of wall clock. Planning before it
+and the Slack workspace wiring afterwards took considerably longer — the coding was never
+the slow part.
+
+**Contracts came before code, because that is what makes the work parallel.** `models.py`
+was written first and depends on nothing: every dataclass the modules exchange — parse
+results, normalized rates, the `WarpError` hierarchy, log entries. Once that existed, the
+parser, the API client, the normalizer, the Block Kit layer and the store could all be
+built at the same time against a fixed shape, each with its own tests, and still fit
+together at the end. Without it, parallel agents produce five subtly different ideas of
+what a rate is. The five commits in this repo follow that order.
+
+**The review gate is the part that mattered.** Generated code passes its own tests very
+happily. These are the things that only turned up when someone read it or ran it for real:
+
+- `normalize_events` sorted `datetime` objects directly. The mock mixes timezone-aware and
+  naive timestamps on the same shipment, so that raises `TypeError` in production. The
+  fixtures were uniform, so the tests were green. Now sorted on `.timestamp()`.
+- Every `httpx.TransportError` was mapped to `timeout`, so a mock that was simply not
+  running told the user the upstream was slow. Only visible by stopping the mock and
+  looking at the card. `connection_error` is now its own case.
+- `/quote help` fell into the invalid-input path instead of showing usage.
+- `1 pallets`, and a status printed twice on every timeline row.
+
+The first two are the useful ones: a unit test suite written alongside the code tends to
+share the code's assumptions. Running the real thing against the real mock is what broke
+them.
+
+**The product calls were not delegated.** Refusing to price without a weight; making
+quotes ephemeral with a Share button; reading `transitTime: 0` as unknown rather than
+same-day; justifying the cache by upstream cost rather than by latency; logging failures
+because they are the half that says where the tool lets people down — each of those is a
+decision about what the tool should do, argued out before any of it was assigned. An agent
+will happily default a missing `serviceLevel` to `STANDARD` and produce clean, tested,
+wrong code.
 
 ---
 
