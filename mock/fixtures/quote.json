@@ -1,0 +1,13 @@
+{
+  "quote_id": "PRICING_mock0000-0000-0000-0000-000000000001",
+  "price": { "amount": 760.572527, "currency_code": "USD" },
+  "charges": [
+    { "code": "TOTAL", "description": "Total rate", "amount": 760.572527 },
+    { "code": "SERVICE_OPTION", "description": "fuel_surcharge", "amount": 83.032527 }
+  ],
+  "transit_time": 5,
+  "expiration_time_utc": 1785455842,
+  "status": "ACCEPT",
+  "notes": "Mock quote — value does not vary by lane.",
+  "shipmentType": "LTL"
+}

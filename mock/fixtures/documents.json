@@ -1,0 +1,5 @@
+{
+  "O-1001": { "orderId": "O-1001", "orderNumber": "P-1001", "data": [ { "type": "bol", "shipmentId": "SH-1001", "shipmentNumber": "S-1001-IN", "url": "__BASE__/p/files/download/DOC-BOL-1001" } ] },
+  "O-1002": { "orderId": "O-1002", "orderNumber": "P-1002", "data": [ { "type": "bol", "shipmentId": "SH-1002", "shipmentNumber": "S-1002-DEL", "url": "__BASE__/p/files/download/DOC-BOL-1002" }, { "type": "pod", "shipmentId": "SH-1002", "shipmentNumber": "S-1002-DEL", "url": "__BASE__/p/files/download/DOC-POD-1002" } ] },
+  "O-1004": { "orderId": "O-1004", "orderNumber": "P-1004", "data": [ { "type": "bol", "shipmentId": "SH-1004", "shipmentNumber": "S-1004", "url": "__BASE__/p/files/download/DOC-BOL-1004" } ] }
+}

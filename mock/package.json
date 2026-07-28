@@ -1,0 +1,10 @@
+{
+  "name": "warp-mock-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local mock of the Warp freight API for the take-home challenge",
+  "bin": { "warp-mock": "server.js" },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

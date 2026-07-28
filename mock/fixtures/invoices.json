@@ -1,0 +1,5 @@
+{
+  "O-1001": { "orderId": "O-1001", "orderNumber": "P-1001", "status": "pending", "transitCost": 656.6475, "volumeDiscount": 0, "fuelCost": 83.03, "serviceOptions": [], "grandTotal": 739.6775 },
+  "O-1002": { "orderId": "O-1002", "orderNumber": "P-1002", "status": "paid", "transitCost": 512.0, "volumeDiscount": 25.0, "fuelCost": 61.44, "serviceOptions": [ { "name": "liftgate_delivery", "amount": 45.0 } ], "grandTotal": 593.44 },
+  "O-1004": { "orderId": "O-1004", "orderNumber": "P-1004", "status": "paid", "transitCost": 1875.0, "volumeDiscount": 0, "fuelCost": 240.0, "serviceOptions": [], "grandTotal": 2115.0 }
+}

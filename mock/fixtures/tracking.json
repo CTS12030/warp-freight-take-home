@@ -1,0 +1,29 @@
+{
+  "S-1001-IN": {
+    "trackingNumber": "S-1001-IN",
+    "orderId": "O-1001",
+    "orderNumber": "P-1001",
+    "shipmentId": "SH-1001",
+    "shipmentNumber": "S-1001-IN",
+    "statusInfo": { "status": "in_transit", "lastUpdated": "2026-07-25T14:12:00.000Z" },
+    "location": { "city": "Amarillo", "state": "TX", "lat": 35.221997, "lng": -101.831297 }
+  },
+  "S-1002-DEL": {
+    "trackingNumber": "S-1002-DEL",
+    "orderId": "O-1002",
+    "orderNumber": "P-1002",
+    "shipmentId": "SH-1002",
+    "shipmentNumber": "S-1002-DEL",
+    "statusInfo": { "status": "delivered", "lastUpdated": "2026-07-24T22:40:00.000Z" },
+    "location": { "city": "Chicago", "state": "IL", "lat": 41.85003, "lng": -87.65005 }
+  },
+  "S-1003-CAN": {
+    "trackingNumber": "S-1003-CAN",
+    "orderId": "O-1003",
+    "orderNumber": "P-1003",
+    "shipmentId": "SH-1003",
+    "shipmentNumber": "S-1003-CAN",
+    "statusInfo": { "status": "canceled", "lastUpdated": "2026-07-22T04:54:21.988Z" },
+    "location": null
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "01MOCKREQ0000000000000001",
+  "requestId": "01MOCKREQ0000000000000001",
+  "options": [
+    { "source": "Priority1", "id": "opt_xpol", "carrierCode": "XPOL", "carrierName": "XPO", "transitTime": 432000, "rate": 755.124, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WWEX", "id": "opt_cnwy", "carrierCode": "CNWY", "carrierName": "XPO Logistics", "transitTime": 432000, "rate": 583.056, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WWEX", "id": "opt_fwra", "carrierCode": "FWRA", "carrierName": "Forward Air", "transitTime": 259200, "rate": 432.288, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WARP", "id": "opt_wtch", "carrierCode": "WTCH", "carrierName": "Warp Technology", "transitTime": 388800, "rate": 760.572527, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "Priority1", "id": "opt_ctbv", "carrierCode": "CTBV", "carrierName": "Custom Companies", "transitTime": 345600, "rate": 589.86, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "Priority1", "id": "opt_dolr", "carrierCode": "DOLR", "carrierName": "Dot-Line Transportation", "transitTime": 432000, "rate": 656.784, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WWEX", "id": "opt_rlca", "carrierCode": "RLCA", "carrierName": "RL Carriers", "transitTime": 345600, "rate": 583.656, "serviceLevel": "STANDARD", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WWEX", "id": "opt_cnwy_g", "carrierCode": "CNWY", "carrierName": "XPO Logistics", "transitTime": 432000, "rate": 704.472, "serviceLevel": "GUARANTEED", "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "Priority1", "id": "opt_utpa", "carrierCode": "UTPA", "carrierName": "UNIS Transportation", "transitTime": 0, "rate": 722.652, "shipmentType": "LTL", "serviceCharges": [] },
+    { "source": "WWEX", "id": "opt_rlca_g", "carrierCode": "RLCA", "carrierName": "RL Carriers", "transitTime": 345600, "rate": 646.068, "serviceLevel": "GUARANTEED", "shipmentType": "LTL", "serviceCharges": [] }
+  ]
+}
