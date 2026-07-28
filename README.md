@@ -1,5 +1,11 @@
 # Warp Freight — Engineering Challenge
 
+> **Submission:** I built [`slack-quote/`](slack-quote/README.md) — start there. That
+> README has the run instructions, the decisions and tradeoffs, and how it was built.
+> The original brief for it is kept at [`slack-quote/BRIEF.md`](slack-quote/BRIEF.md).
+>
+> Everything below this line is the challenge as it was given to me, unchanged.
+
 A take-home build against a freight API. Pick **one** of two projects, spend about a
 **half day (~4 hours)**, and submit within **2 days**. We care far more about the
 decisions you make than about how many features you finish — a smaller thing done well
