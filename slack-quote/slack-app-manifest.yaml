@@ -1,0 +1,44 @@
+# Slack app manifest for Freight Desk.
+#
+# Create the app at https://api.slack.com/apps with "From a manifest" and paste this in,
+# replacing every REPLACE_WITH_YOUR_PUBLIC_URL with the HTTPS address of your tunnel
+# (for example https://something.trycloudflare.com). The URL changes each time the
+# tunnel restarts, and both request URLs below have to be updated when it does.
+#
+# The app needs no bot token: replies go back through the response_url that arrives with
+# each request. The only credential it holds is the signing secret, used to verify.
+
+display_information:
+  name: Freight Desk
+  description: Rate-shop a lane, track a shipment, and pull its paperwork.
+  background_color: "#1a1d21"
+
+features:
+  slash_commands:
+    - command: /quote
+      url: REPLACE_WITH_YOUR_PUBLIC_URL/slack/commands
+      description: Rate-shop a lane, cheapest first
+      usage_hint: 90001 to 60601, 2 pallets, 1000 lbs
+      should_escape: false
+    - command: /track
+      url: REPLACE_WITH_YOUR_PUBLIC_URL/slack/commands
+      description: Where is my shipment?
+      usage_hint: S-1001-IN
+      should_escape: false
+    - command: /shipments
+      url: REPLACE_WITH_YOUR_PUBLIC_URL/slack/commands
+      description: Recent shipments on the account
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - commands
+
+settings:
+  interactivity:
+    is_enabled: true
+    request_url: REPLACE_WITH_YOUR_PUBLIC_URL/slack/interactivity
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
