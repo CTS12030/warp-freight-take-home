@@ -1,8 +1,7 @@
 # Freight Desk for Slack
 
-**Recording:**
-
-**Brief:** [`BRIEF.md`](BRIEF.md) · **Tests:** 113, no network
+**Recording:** [Walkthrough on Loom](https://www.loom.com/share/e7a451f9cdb6406a96f0a8f3bddf0ed2)
+· **Brief:** [`BRIEF.md`](BRIEF.md) · **Tests:** 113, no network
 
 Three read-only slash commands that let a coordinator price a lane, chase a shipment and
 review an account without leaving Slack.
